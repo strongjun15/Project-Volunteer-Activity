@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI와 첫걸음 · 멘토링 연구 프로젝트</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ===== 메인 탭 네비 ===== -->
+<nav id="mainNav">
+  <div class="brand"><span class="mark"></span>멘토링 연구 프로젝트</div>
+  <div class="main-tabs">
+    <button class="main-tab active" onclick="switchTab('A')">(A) AI와 첫걸음</button>
+    <button class="main-tab" onclick="switchTab('B')">(B) 사이트 만들기</button>
+  </div>
+  <div id="mainProgress"></div>
+</nav>
+
+<!-- ================================================================
+     섹션 A — AI와 첫걸음
+     ================================================================ -->
+<div id="sectionA">
+
+  <!-- 스텝 네비 -->
+  <!-- Section A 진행바 -->
+  <div id="aProgressWrap" style="height:3px;background:var(--line);">
+    <div id="aProgressFill" style="height:100%;background:var(--fg);width:11.1%;transition:width .4s ease;"></div>
+  </div>
+  <!-- Section A 탑바 -->
+  <div id="stepNav">
+    <a class="step-dot a-active" onclick="showAPage(0)"><span class="num">00</span><span class="label">시작</span></a>
+    <a class="step-dot" onclick="showAPage(1)"><span class="num">01</span><span class="label">바이브코딩</span></a>
+    <a class="step-dot" onclick="showAPage(2)"><span class="num">02</span><span class="label">레벨업</span></a>
+    <a class="step-dot" onclick="showAPage(3)"><span class="num">03</span><span class="label">규칙 실험실</span></a>
+    <a class="step-dot" onclick="showAPage(4)"><span class="num">04</span><span class="label">CLAUDE.md</span></a>
+    <a class="step-dot" onclick="showAPage(5)"><span class="num">05</span><span class="label">비교 체험</span></a>
+    <a class="step-dot" onclick="showAPage(6)"><span class="num">06</span><span class="label">하네스 6축</span></a>
+    <a class="step-dot" onclick="showAPage(7)"><span class="num">07</span><span class="label">나만의 규칙</span></a>
+    <a class="step-dot" onclick="showAPage(8)"><span class="num">08</span><span class="label">다음 시간</span></a>
+  </div>
+
+  <!-- 히어로 -->
+  <div class="hero a-page a-active" id="step0">
+    <div id="hero3d-wrap"></div>
+    <div class="hero-grid-bg"></div>
+    <div class="hero-hud">
+      <div style="position:absolute;top:18px;left:24px">오늘의 미션™<br>[V.1.0_MENTORING]</div>
+      <div style="position:absolute;top:18px;right:24px;text-align:right"><span style="display:inline-block;width:6px;height:6px;background:#1a1a1a;border-radius:50%;margin-right:6px"></span>SYSTEM_ACTIVE<br>MENTOR_LINK: OK</div>
+      <div style="position:absolute;bottom:18px;right:24px;text-align:right">(DIAGRAM 01)<br>RULE_CALIBRATION_READY</div>
+    </div>
+    <div class="hero-inner">
+      <span class="eyebrow"><span class="dot"></span>바이브코딩 1차시</span>
+      <h1>코드 한 줄 안 쓰고,<br>AI와 함께 진짜 웹사이트를 만든다</h1>
+      <p style="font-size:16px;line-height:1.7;">바이브코딩이란, AI에게 내가 원하는 것을 말로 설명하고 결과물을 받아내는 방식이다. 코드를 외우는 게 아니라 <b>어떻게 말하느냐</b>가 핵심이다. 오늘은 그 차이를 직접 체험한다.</p>
+      <div class="hero-stat-row">
+        <div class="hero-stat"><span class="hs-num">0줄</span><span class="hs-lbl">직접 짜는 코드</span></div>
+        <div class="hero-stat"><span class="hs-num">3단계</span><span class="hs-lbl">오늘 실습</span></div>
+        <div class="hero-stat"><span class="hs-num">1개</span><span class="hs-lbl">나만의 규칙 카드</span></div>
+      </div>
+      <div class="mockup-row">
+        <div class="phone bad reveal">
+          <div class="tag">✕ 규칙 없이 그냥 시켰을 때</div>
+          <div class="phone-screen">
+            <div class="ps-title">// app.js</div>
+            <div class="ps-item">할 일 입력</div>
+            <div class="ps-item">체크박스</div>
+            <div class="ps-timer">45:00</div>
+            <div class="ps-btn">START</div>
+          </div>
+          <div class="caption">색도, 시간도, 분위기도 AI 마음대로 정한다.</div>
+        </div>
+        <div class="phone good reveal">
+          <div class="tag">✓ 규칙을 미리 정해줬을 때</div>
+          <div class="phone-screen">
+            <div class="ps-title">🌤️ 오늘 할 일</div>
+            <div class="ps-item">📚 수학 숙제하기</div>
+            <div class="ps-item">🎨 그림 그리기</div>
+            <div class="ps-timer">25:00</div>
+            <div class="ps-btn">집중 시작 ▶</div>
+          </div>
+          <div class="caption">중학생 취향, 파스텔톤, 25분 집중까지 — 첫 결과부터 딱 맞는다.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 바이브코딩이란? ── -->
+  <section class="a-page" id="step0b">
+    <span class="eyebrow"><span class="dot"></span>바이브코딩이란?</span>
+    <h2 class="reveal">코드 문법보다 <em style="font-style:normal;color:var(--teal)">무엇을 만들고 싶은가</em>가 중요하다</h2>
+    <p class="reveal" style="color:var(--gray);font-size:16px;max-width:680px;line-height:1.75;">바이브코딩(Vibe Coding)은 AI에게 자연어(우리가 평소에 쓰는 말)로 원하는 것을 설명하고, AI가 코드를 대신 짜주는 방식이다. 코드를 외울 필요가 없다. 대신 <b>어떻게 말하느냐</b>가 핵심 실력이 된다.</p>
+
+    <div class="vibe-compare reveal">
+      <div class="vc-col">
+        <div class="vc-head bad-head">❌ 기존 방식</div>
+        <div class="vc-body">
+          <div class="vc-row"><span class="vc-icon">😰</span><span>HTML, CSS, JS 문법을 전부 외워야 한다</span></div>
+          <div class="vc-row"><span class="vc-icon">😰</span><span>버그 하나가 몇 시간을 잡아먹는다</span></div>
+          <div class="vc-row"><span class="vc-icon">😰</span><span>"함수", "배열", "비동기" 같은 개념 없이는 시작도 못 한다</span></div>
+          <div class="vc-row"><span class="vc-icon">😰</span><span>만들고 싶은 아이디어는 있는데, 손이 안 따라온다</span></div>
+        </div>
+      </div>
+      <div class="vc-vs">VS</div>
+      <div class="vc-col">
+        <div class="vc-head good-head">✅ 바이브코딩</div>
+        <div class="vc-body">
+          <div class="vc-row"><span class="vc-icon">🙌</span><span>만들고 싶은 걸 말로 설명하면 AI가 코드를 짜준다</span></div>
+          <div class="vc-row"><span class="vc-icon">🙌</span><span>버그가 나면 "이거 왜 안 돼?"라고 물어보면 된다</span></div>
+          <div class="vc-row"><span class="vc-icon">🙌</span><span>"중학생용 암기카드 앱" 같은 설명만으로도 시작 가능하다</span></div>
+          <div class="vc-row"><span class="vc-icon">🙌</span><span>아이디어가 있으면 오늘 바로 만들 수 있다</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout-box reveal">
+      <span class="cb-icon">💡</span>
+      <div>
+        <b>실제로 쓰이고 있다</b><br>
+        <span style="font-size:15px;">2025년 기준, 유명 개발자들도 AI와 함께 코드를 짠다. AI를 "쓸 줄 아는 사람"과 "못 쓰는 사람"의 생산성 차이가 10배 이상 벌어지고 있다. 지금 배우는 게 가장 빠르다.</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── AI와 대화하는 3단계 레벨업 ── -->
+  <section class="a-page" id="step0c">
+    <span class="eyebrow"><span class="dot"></span>3단계 레벨업</span>
+    <h2 class="reveal">AI를 잘 쓰는 사람들은 어떻게 다를까?</h2>
+    <p class="reveal" style="color:var(--gray);font-size:16px;max-width:660px;line-height:1.75;">AI를 쓰는 방식에도 레벨이 있다. 처음엔 질문 잘 하는 법을 배우고, 점점 AI가 스스로 잘 일하는 환경을 만드는 단계로 올라간다. 오늘은 이 3단계 전부를 맛본다.</p>
+
+    <div class="level-cards reveal">
+      <div class="level-card lv1">
+        <div class="lv-badge">LEVEL 1</div>
+        <div class="lv-title">프롬프트 엔지니어링</div>
+        <div class="lv-sub">잘 말하기</div>
+        <div class="lv-desc">AI에게 질문을 잘 만드는 기술이다. "앱 만들어줘"보다 "중학생이 쓸 수 있는, 파스텔톤 디자인의 25분 타이머 앱 만들어줘"처럼 <b>구체적으로</b> 말할수록 AI가 더 잘 이해한다.</div>
+        <div class="lv-example">
+          <div class="lv-ex-bad">❌ "투두 앱 만들어줘"</div>
+          <div class="lv-ex-good">✅ "중학생용, 파스텔 핑크 디자인, 25분 타이머 포함, 체크리스트 앱 만들어줘"</div>
+        </div>
+        <div class="lv-keyword">핵심: 구체적인 설명 + 조건 + 예시</div>
+      </div>
+      <div class="level-card lv2">
+        <div class="lv-badge">LEVEL 2</div>
+        <div class="lv-title">컨텍스트 엔지니어링</div>
+        <div class="lv-sub">잘 준비하기</div>
+        <div class="lv-desc">AI는 대화가 끊기면 이전 내용을 잊어버린다. 컨텍스트 엔지니어링은 <b>AI에게 미리 필요한 정보를 넣어두는 것</b>이다. CLAUDE.md 파일 하나가 이 역할을 한다. 매번 설명 안 해도 된다.</div>
+        <div class="lv-example">
+          <div class="lv-ex-bad">❌ 매번 새 대화마다 "나는 중학생이고, 물리 공부 앱을 만들고 있어..." 반복</div>
+          <div class="lv-ex-good">✅ CLAUDE.md 파일에 한 번만 써두면 AI가 항상 기억한다</div>
+        </div>
+        <div class="lv-keyword">핵심: AI가 알아야 할 정보를 파일로 준비</div>
+      </div>
+      <div class="level-card lv3">
+        <div class="lv-badge">LEVEL 3</div>
+        <div class="lv-title">하네스 엔지니어링</div>
+        <div class="lv-sub">잘 설계하기</div>
+        <div class="lv-desc">하네스(Harness)는 마차를 끄는 말에게 채우는 장비다. AI도 잘 쓰려면 <b>도구, 규칙, 역할을 미리 설계해줘야 한다</b>. Plugin, Hook, 모델 분업이 이 레벨의 도구들이다. AI가 혼자 잘 일하게 만드는 것이 목표다.</div>
+        <div class="lv-example">
+          <div class="lv-ex-good">✅ CLAUDE.md + Superpowers 플러그인 + Hook 안전장치 + Plan Mode = AI가 스스로 잘 일하는 환경</div>
+        </div>
+        <div class="lv-keyword">핵심: AI가 잘 일하는 환경 자체를 설계</div>
+      </div>
+    </div>
+
+    <div class="level-arrow-row reveal">
+      <span class="lar-item"><b>프롬프트</b><br><small>질문 잘 하기</small></span>
+      <span class="lar-arrow">→</span>
+      <span class="lar-item"><b>컨텍스트</b><br><small>정보 미리 준비</small></span>
+      <span class="lar-arrow">→</span>
+      <span class="lar-item lari-highlight"><b>하네스</b><br><small>환경 자체 설계</small></span>
+    </div>
+  </section>
+
+  <!-- STEP1 -->
+  <section class="a-page" id="step1">
+    <span class="eyebrow"><span class="dot"></span>STEP 1 · 규칙 실험실</span>
+    <h2 class="reveal">규칙 스위치를 켜고 꺼보면서, 효과를 직접 확인해보자</h2>
+    <p class="reveal" style="color:var(--gray);font-size:15.5px;">아래는 멘토가 AI에게 미리 전달해 둔 약속(<code>CLAUDE.md</code>)이다. 스위치를 꺼보면 오른쪽 미리보기가 어떻게 달라지는지 보이나?</p>
+    <div class="lab-grid">
+      <div>
+        <div class="rule-toggle on reveal" data-rule="target">
+          <div class="switch"><div class="knob"></div></div>
+          <div class="txt"><b>🎯 타깃: 중학생</b><span>"이 앱은 중학생이 쓸 거야"라고 미리 알려줌</span></div>
+        </div>
+        <div class="rule-toggle on reveal" data-rule="pastel">
+          <div class="switch"><div class="knob"></div></div>
+          <div class="txt"><b>🎨 파스텔톤 디자인</b><span>화면 색감과 분위기를 미리 지정함</span></div>
+        </div>
+        <div class="rule-toggle on reveal" data-rule="timer">
+          <div class="switch"><div class="knob"></div></div>
+          <div class="txt"><b>⏱️ 25분+5분 타이머</b><span>집중 시간 방식(뽀모도로)을 구체적으로 지정함</span></div>
+        </div>
+        <div class="rule-toggle on reveal" data-rule="easy">
+          <div class="switch"><div class="knob"></div></div>
+          <div class="txt"><b>💬 쉬운 말로 설명</b><span>어려운 전문용어를 쓰지 말라고 미리 부탁함</span></div>
+        </div>
+      </div>
+      <div class="preview-panel reveal">
+        <div class="plabel">실시간 미리보기</div>
+        <div class="phone good" style="margin:0;">
+          <div class="phone-screen">
+            <div class="ps-title" id="prevTitle">🌤️ 오늘 할 일</div>
+            <div class="ps-item" id="prevItem1">📚 수학 숙제하기</div>
+            <div class="ps-item" id="prevItem2">🎨 그림 그리기</div>
+            <div class="ps-timer" id="prevTimer">25:00</div>
+            <div class="ps-btn" id="prevBtn">집중 시작 ▶</div>
+          </div>
+          <div class="caption" id="prevCaption">규칙 4개가 모두 켜져 있다. 하나씩 꺼보자!</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CLAUDE.md 개념 (컨텍스트 엔지니어링 실습) ── -->
+  <section class="a-page" id="step1b">
+    <span class="eyebrow"><span class="dot"></span>컨텍스트 엔지니어링 체험</span>
+    <h2 class="reveal">AI는 대화가 끊기면 모든 걸 잊는다 — CLAUDE.md가 해결한다</h2>
+    <p class="reveal" style="color:var(--gray);font-size:16px;max-width:660px;line-height:1.75;">AI 채팅은 창을 닫으면 처음부터 다시 시작이다. 매번 "나는 중학생이고, 물리 공부 앱을 만들고 있어..."를 반복해야 할까? <b>CLAUDE.md 파일</b> 하나가 이 문제를 완전히 해결한다.</p>
+
+    <div class="claudemd-split reveal">
+      <div class="cm-before">
+        <div class="cm-label bad-label">❌ CLAUDE.md 없이</div>
+        <div class="chat-bubble user-b">안녕! 나 물리 공부 앱 만들려고 해. 나는 중학생이고...</div>
+        <div class="chat-bubble ai-b">알겠어요! 어떤 기능을...</div>
+        <div class="cm-day">— 다음 날 새 대화 시작 —</div>
+        <div class="chat-bubble user-b">어제 하던 앱에 카드 넘기기 기능 추가해줘</div>
+        <div class="chat-bubble ai-b">죄송해요, 어떤 앱을 말씀하시는 건가요? 처음부터 설명해주세요 😅</div>
+        <div class="cm-result bad-result">매번 처음부터 다시 설명해야 한다</div>
+      </div>
+      <div class="cm-after">
+        <div class="cm-label good-label">✅ CLAUDE.md 있으면</div>
+        <div class="claudemd-file">
+          <div class="clf-header">📋 CLAUDE.md</div>
+          <div class="clf-body"><span class="clf-comment"># 프로젝트 규칙</span>
+- 사용자: 중학생 (물리 공부용)
+- 디자인: 파스텔톤, 둥근 모서리
+- 언어: 쉬운 한국어만 사용
+- 타이머: 25분 뽀모도로 방식</div>
+        </div>
+        <div class="cm-day">— 다음 날 새 대화 시작 —</div>
+        <div class="chat-bubble user-b">카드 넘기기 기능 추가해줘</div>
+        <div class="chat-bubble ai-b">물리 공부 앱에 카드 넘기기 추가할게요! 파스텔톤으로 맞출게요 ✅</div>
+        <div class="cm-result good-result">AI가 항상 기억하고 있다</div>
+      </div>
+    </div>
+
+    <div class="callout-box reveal" style="margin-top:28px;">
+      <span class="cb-icon">🎯</span>
+      <div>
+        <b>CLAUDE.md 작성 팁 3가지</b><br>
+        <span style="font-size:15px;">① 짧게 유지 (길면 매 세션마다 읽히니까 토큰 낭비)<br>② 이 프로젝트에만 해당하는 규칙만 담기<br>③ AI가 자주 틀리는 부분을 한 줄씩 추가하면서 발전시키기</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- STEP2 -->
+  <section class="a-page" id="step2">
+    <span class="eyebrow"><span class="dot"></span>STEP 2 · 비교 체험</span>
+    <h2 class="reveal">같은 부탁, 다른 방식 — AI의 대답을 직접 실행해보자</h2>
+    <p class="reveal" style="color:var(--gray);font-size:15.5px;">만들고 싶은 걸 자유롭게 적어보자. 그리고 <b>같은 문장을 두 가지 방식</b>으로 부탁했을 때 AI가 어떻게 다르게 대답하는지 비교해보자.</p>
+    <div class="idea-input-row reveal">
+      <input type="text" id="ideaInput" value="투두·타이머 앱">
+      <button class="rerun-btn" onclick="rerunCompare()">이 아이디어로 다시 실행 ↻</button>
+    </div>
+    <div class="compare-grid reveal">
+      <div class="chat-col left">
+        <h3>😅 그냥 "이거 해줘"</h3>
+        <div class="sub">방식 A · 빠르지만 대충</div>
+        <div class="bubble user" id="bubbleUserA"><span class="ideaEcho">투두·타이머</span> 앱 만들어줘.</div>
+        <button class="run-btn" data-target="ai-a">AI 실행해보기 ▶</button>
+        <div class="typing-dots" id="typing-a"><span></span><span></span><span></span></div>
+        <div class="bubble ai" id="ai-a"></div>
+      </div>
+      <div class="chat-col right">
+        <h3>🙌 "같이 계획 세우자"</h3>
+        <div class="sub">방식 B · 조금 느리지만 정확</div>
+        <div class="bubble user" id="bubbleUserB"><span class="ideaEcho">투두·타이머</span> 앱을 만들고 싶어. 만들기 전에 누가 쓸 건지, 어떤 느낌이면 좋겠는지 같이 정하고 시작하자.</div>
+        <button class="run-btn" data-target="ai-b">AI 실행해보기 ▶</button>
+        <div class="typing-dots" id="typing-b"><span></span><span></span><span></span></div>
+        <div class="bubble ai" id="ai-b"></div>
+      </div>
+    </div>
+    <div class="reflect-box reveal">
+      <h3>🤔 어떤 차이를 느꼈나?</h3>
+      <div class="reflect-options">
+        <button data-r="1">A는 빨랐지만 뭔가 어긋나 보여요</button>
+        <button data-r="2">B는 저를 더 이해하고 만든 것 같다</button>
+        <button data-r="3">둘 다 비슷한 것 같다</button>
+      </div>
+      <div class="reflect-answer" id="reflect-1">맞다! A는 빠르지만 "누가, 어떤 목적으로" 쓰는지 몰라서 엉뚱한 기본값이 들어가요. 빠른 대신 다시 고쳐 달라고 여러 번 부탁해야 할 수도 있다.</div>
+      <div class="reflect-answer" id="reflect-2">맞다! B는 만들기 전에 "누구를 위한 건지, 어떤 느낌인지"를 먼저 확인한다. 시간은 조금 더 걸리지만, 처음부터 원하는 것에 가까운 결과가 나온다.</div>
+      <div class="reflect-answer" id="reflect-3">한번 더 자세히 볼까요? A는 바로 결과물을 내놓지만 시간이나 스타일을 멋대로 정한다. B는 만들기 전에 나에게 먼저 질문한다. 이 "정확도"의 차이가 오늘 배우는 핵심이다.</div>
+    </div>
+  </section>
+
+  <!-- ── 하네스 엔지니어링 6축 ── -->
+  <section class="a-page" id="step2b">
+    <span class="eyebrow"><span class="dot"></span>하네스 엔지니어링</span>
+    <h2 class="reveal">AI가 혼자 잘 일하게 만드는 6가지 축</h2>
+    <p class="reveal" style="color:var(--gray);font-size:16px;max-width:660px;line-height:1.75;">하네스(Harness)는 말에게 채우는 장비다. AI도 잘 쓰려면 미리 장비를 채워줘야 한다. 6가지 축이 서로 맞물려야 AI가 처음부터 원하는 결과를 낸다. 다음 시간에 이 6축을 직접 실습한다.</p>
+
+    <div class="harness-grid reveal">
+      <div class="h-card">
+        <div class="h-num">1</div>
+        <div class="h-axis">구조</div>
+        <div class="h-title">도구를 미리 준비한다</div>
+        <div class="h-desc">Claude Code 설치, Superpowers 플러그인 설치처럼 AI가 쓸 도구를 먼저 깔아두는 것. 공사 전에 공구함부터 채우는 것과 같다.</div>
+        <div class="h-example">예: Claude Code 설치, 플러그인 설치</div>
+      </div>
+      <div class="h-card">
+        <div class="h-num">2</div>
+        <div class="h-axis">맥락</div>
+        <div class="h-title">AI가 알아야 할 정보를 넣는다</div>
+        <div class="h-desc">CLAUDE.md 파일에 프로젝트 규칙을 적어두는 것. AI가 새 세션을 시작해도 항상 이 내용을 읽고 상황을 파악한다.</div>
+        <div class="h-example">예: CLAUDE.md 작성</div>
+      </div>
+      <div class="h-card">
+        <div class="h-num">3</div>
+        <div class="h-axis">계획</div>
+        <div class="h-title">코드보다 설계가 먼저다</div>
+        <div class="h-desc">Plan Mode로 AI가 코드를 짜기 전에 먼저 계획을 세우고 물어본다. "바로 만들어줘"가 아니라 "어떻게 만들 건지 먼저 보여줘"다.</div>
+        <div class="h-example">예: Plan Mode 진입 → 승인 후 실행</div>
+      </div>
+      <div class="h-card">
+        <div class="h-num">4</div>
+        <div class="h-axis">실행</div>
+        <div class="h-title">구체적으로 피드백한다</div>
+        <div class="h-desc">"이상해"가 아니라 "버튼이 너무 작고, 색이 배경과 안 맞아서 안 보여"처럼 구체적으로 말할수록 AI가 한 번에 정확히 고친다.</div>
+        <div class="h-example">예: 결과 확인 → 정확한 피드백 제공</div>
+      </div>
+      <div class="h-card">
+        <div class="h-num">5</div>
+        <div class="h-axis">검증</div>
+        <div class="h-title">자동으로 실수를 막는다</div>
+        <div class="h-desc">Hook(훅)은 특정 상황에서 자동으로 실행되는 안전장치다. 비밀 키를 실수로 코드에 넣으려 하면 자동으로 차단해준다.</div>
+        <div class="h-example">예: 비밀 키 노출 차단 Hook 설정</div>
+      </div>
+      <div class="h-card">
+        <div class="h-num">6</div>
+        <div class="h-axis">개선</div>
+        <div class="h-title">배포 후에도 계속 발전시킨다</div>
+        <div class="h-desc">Vercel로 실제 인터넷에 올린 뒤, 피드백을 받아서 다시 다듬는다. 하네스 엔지니어링은 한 번 끝나는 게 아니라 계속 도는 사이클이다.</div>
+        <div class="h-example">예: Vercel 배포 → 피드백 → 개선 반복</div>
+      </div>
+    </div>
+
+    <div class="harness-cycle reveal">
+      <span>구조</span><span class="hc-arrow">→</span>
+      <span>맥락</span><span class="hc-arrow">→</span>
+      <span>계획</span><span class="hc-arrow">→</span>
+      <span>실행</span><span class="hc-arrow">→</span>
+      <span>검증</span><span class="hc-arrow">→</span>
+      <span class="hc-highlight">개선</span><span class="hc-arrow">↩ 반복</span>
+    </div>
+  </section>
+
+  <!-- STEP3 -->
+  <section class="a-page" id="step3">
+    <span class="eyebrow"><span class="dot"></span>STEP 3 · 나만의 규칙</span>
+    <h2 class="reveal">이제 나만의 AI 사용 규칙을 만들어보자</h2>
+    <p class="reveal" style="color:var(--gray);font-size:15.5px;">오늘 배운 것처럼, AI에게 미리 약속을 정해두면 훨씬 좋은 결과를 받을 수 있다. 카드를 눌러 힌트를 얻거나, 직접 적어보자.</p>
+    <div class="chip-row reveal">
+      <div class="chip" onclick="fillRule(this)">설명은 쉬운 말로 해줘</div>
+      <div class="chip" onclick="fillRule(this)">결과 보여주기 전에 나한테 먼저 물어봐줘</div>
+      <div class="chip" onclick="fillRule(this)">색깔은 항상 파란 계열로 해줘</div>
+      <div class="chip" onclick="fillRule(this)">한 번에 하나씩만 바꿔줘</div>
+    </div>
+    <div class="rule-form reveal">
+      <label for="sname">내 이름</label>
+      <input type="text" id="sname" placeholder="예: 김민준">
+      <label for="srule">나만의 AI 사용 규칙 (1~2줄)</label>
+      <textarea id="srule" placeholder="위 카드를 누르거나 직접 적어보자"></textarea>
+      <button class="submit-btn" onclick="makeCard()">완성 카드 만들기 →</button>
+    </div>
+    <div class="card-wrap" id="cardWrap">
+      <canvas id="cardCanvas" width="1000" height="620"></canvas>
+      <div class="card-actions">
+        <button class="print-btn" onclick="downloadCard()">⬇️ 카드 이미지로 저장하기</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 다음 시간 예고 -->
+  <section class="a-page" id="stepNext">
+    <span class="eyebrow"><span class="dot"></span>다음 시간 예고</span>
+    <h2 class="reveal">오늘 배운 개념을 가지고, 직접 사이트를 만든다</h2>
+    <p class="reveal" style="color:var(--gray);font-size:15.5px;">다음 시간엔 터미널에서 Claude Code를 켜는 것부터 시작한다. Superpowers 플러그인 설치, CLAUDE.md 작성, Plan Mode 설계, Hook 안전장치, Supabase 데이터베이스 연결, Vercel 배포까지 — 진짜 인터넷 주소가 있는 웹사이트를 직접 만든다.</p>
+    <div class="next-cards reveal">
+      <div class="next-card">
+        <span class="nc-step">STEP 1</span>
+        <b>터미널 + Claude Code 켜기</b>
+        <span>Superpowers 플러그인까지 설치</span>
+      </div>
+      <div class="next-card">
+        <span class="nc-step">STEP 2~3</span>
+        <b>CLAUDE.md + Plan Mode</b>
+        <span>규칙 파일 작성 후 AI가 설계</span>
+      </div>
+      <div class="next-card">
+        <span class="nc-step">STEP 4~6</span>
+        <b>만들고 · 다듬고 · DB 연결</b>
+        <span>Supabase로 데이터 영구 저장</span>
+      </div>
+      <div class="next-card nc-highlight">
+        <span class="nc-step">STEP 7</span>
+        <b>Vercel 배포 — 진짜 주소 완성!</b>
+        <span>친구 핸드폰으로 바로 접속 가능</span>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:32px;">
+      <button class="a-nav-next a-nav-btn" style="padding:14px 32px;font-size:11px;" onclick="switchTab('B')">공부 사이트 만들기 탭으로 이동 →</button>
+    </div>
+  </section>
+
+  <footer>멘토링 연구 프로젝트 · 옥쌤과 아이들 &nbsp;|&nbsp; 김주한(팀장) · 정선재 · 이현준 · 백종원 · 이준서 · 이윤형</footer>
+</div><!-- /sectionA -->
+
+<!-- Section A 고정 하단 네비 -->
+<div id="aBottomNav">
+  <button id="aPrevBtn" class="a-nav-btn" onclick="aPrev()" disabled>← 이전</button>
+  <div id="aPageInfo">
+    <span id="aPageLabel" class="a-page-label">시작</span>
+    <span id="aPageCount" class="a-page-count">01 / 09</span>
+  </div>
+  <button id="aNextBtn" class="a-nav-btn a-nav-next" onclick="aNext()">다음 →</button>
+</div>
+
+
+<!-- ================================================================
+     섹션 B — 나만의 공부 사이트 만들기
+     ================================================================ -->
+<div id="sectionB" class="hidden">
+
+  <!-- 선택 화면 -->
+  <div id="selectScreen">
+    <div class="select-hero">
+      <span class="eyebrow2">STEP 0 · 시작하기 전에</span>
+      <h1>터미널부터 배포까지, 진짜 웹 서비스를 만든다</h1>
+      <p>이름, 과목, 만들고 싶은 사이트 종류를 고르면, Claude Code로 터미널에서 프로젝트를 켜는 것부터 CLAUDE.md 작성, Hook, 데이터베이스 연결, 실제 배포까지 전 과정을 따라가는 가이드가 시작된다.</p>
+    </div>
+    <div class="select-wrap">
+      <div class="name-card">
+        <label for="nameInput">내 이름</label>
+        <input type="text" id="nameInput" placeholder="예: 김주한">
+      </div>
+      <div class="pick-section">
+        <div class="pick-label">1. 과목을 골라보자</div>
+        <div class="subject-grid" id="subjectGrid">
+          <div class="pick-card reveal" data-key="physics" style="--pick-color:#6C5CE7;--pick-bg:#F1EFFE;">
+            <span class="badge">✓</span><span class="ic">⚛️</span><div class="nm">물리</div><div class="ds">힘·운동·에너지</div>
+          </div>
+          <div class="pick-card reveal" data-key="chemistry" style="--pick-color:#2ECC71;--pick-bg:#EEFBF3;">
+            <span class="badge">✓</span><span class="ic">🧪</span><div class="nm">화학</div><div class="ds">원소·반응·몰</div>
+          </div>
+          <div class="pick-card reveal" data-key="biology" style="--pick-color:#FF6F91;--pick-bg:#FFF0F4;">
+            <span class="badge">✓</span><span class="ic">🧬</span><div class="nm">생명과학</div><div class="ds">세포·유전·물질대사</div>
+          </div>
+          <div class="pick-card reveal" data-key="earth" style="--pick-color:#2E86AB;--pick-bg:#EAF5FA;">
+            <span class="badge">✓</span><span class="ic">🌍</span><div class="nm">지구과학</div><div class="ds">지권·기권·해양</div>
+          </div>
+          <div class="pick-card reveal" data-key="info" style="--pick-color:#00CEC9;--pick-bg:#E9FBFA;">
+            <span class="badge">✓</span><span class="ic">💻</span><div class="nm">정보</div><div class="ds">알고리즘·자료구조</div>
+          </div>
+        </div>
+      </div>
+      <div class="pick-section">
+        <div class="pick-label">2. 어떤 사이트가 필요한가요?</div>
+        <div class="type-grid" id="typeGrid">
+          <div class="pick-card reveal" data-key="flashcard" style="--pick-color:#F39C12;--pick-bg:#FFF7EA;">
+            <span class="badge">✓</span><span class="ic">🗂️</span><div class="nm">암기카드</div><div class="ds">용어·개념 외우기</div>
+          </div>
+          <div class="pick-card reveal" data-key="quiz" style="--pick-color:#E17055;--pick-bg:#FFF1EC;">
+            <span class="badge">✓</span><span class="ic">📝</span><div class="nm">문제풀이</div><div class="ds">객관식 문제 풀고 채점</div>
+          </div>
+          <div class="pick-card reveal" data-key="wrongnote" style="--pick-color:#0984E3;--pick-bg:#EAF4FE;">
+            <span class="badge">✓</span><span class="ic">📓</span><div class="nm">오답노트</div><div class="ds">틀린 문제 다시 정리</div>
+          </div>
+          <div class="pick-card reveal" data-key="planner" style="--pick-color:#00B894;--pick-bg:#EAFBF6;">
+            <span class="badge">✓</span><span class="ic">⏱️</span><div class="nm">공부계획+타이머</div><div class="ds">할 일과 집중시간 관리</div>
+          </div>
+        </div>
+      </div>
+      <div class="start-row">
+        <button class="start-btn" id="startBtn" disabled onclick="startGuide()">가이드 시작하기 →</button>
+        <div class="start-hint" id="startHint">이름, 과목, 사이트 종류를 모두 골라보자</div>
+      </div>
+    </div>
+  </div><!-- /selectScreen -->
+
+  <!-- 가이드 화면 -->
+  <div id="guideScreen" class="hidden">
+    <div id="guideInnerNav">
+      <div class="gn-brand"><span id="gnIcon">⚛️</span>&nbsp;공부 사이트 만들기</div>
+      <div id="gnStepBadge" style="color:#7C859C;font-size:13px;font-weight:700;letter-spacing:1px;">STEP 1 / 8</div>
+      <div class="gn-fill" id="gnFill"></div>
+    </div>
+
+    <div class="guide-banner">
+      <span class="gicon" id="gIcon">⚛️🗂️</span>
+      <h2><span id="gName">OO</span>님의 <span id="gSubjectName">물리</span> <span id="gTypeName">암기카드</span> 사이트 만들기</h2>
+      <div class="gsub" id="gTagline"></div>
+      <div class="back-link" onclick="backToSelect()">← 처음으로 돌아가서 다시 고르기</div>
+    </div>
+
+    <div class="prep-box">
+      <h3>🎒 시작 전 준비물</h3>
+      <ul>
+        <li>터미널을 쓸 수 있는 노트북 (Mac 또는 Windows), Node.js 설치</li>
+        <li>Claude Code (터미널에서 쓰는 AI 코딩 도구) — 없으면 STEP1에서 같이 설치한다</li>
+        <li id="prepSubjectHint"></li>
+        <li>궁금한 건 참지 말고 바로 멘토에게 질문하기</li>
+      </ul>
+    </div>
+
+    <div class="wiz-progress-wrap"><div class="wiz-progress-fill" id="wizFill"></div></div>
+    <div class="wiz-badge" id="wizBadge">STEP 1 / 8</div>
+
+    <!-- ── STEP 1: 개발 환경 켜기 ── -->
+    <section class="step wizard-step active" id="s1">
+      <div class="step-head"><div class="step-num">1</div><h2>개발 환경 켜기</h2><span class="axis-badge">하네스 · 구조</span></div>
+      <div class="connect-banner"><span class="cb-recall">1차시 연결</span><span class="cb-sep">|</span><span class="cb-msg">AI가 잘 일하려면 도구부터 준비해야 한다 — 하네스 6축 중 <b>구조</b> 축 실전이다</span><span class="cb-lv lv-tag-3">레벨 3 · 하네스</span></div>
+      <div class="why"><b>왜 이렇게 할까요?</b> 실제 개발자들은 채팅창이 아니라 <b>터미널</b>에서 AI 코딩 도구를 켜고 작업한다. 오늘은 Claude Code를 터미널에서 실행하고, <b>Superpowers 플러그인</b>까지 설치해서 AI가 계획을 더 잘 세울 수 있게 준비한다.</div>
+      <div class="prompt-box">
+        <span class="label">① Claude Code 설치 + 프로젝트 폴더 만들기</span>
+        <span class="ptext" id="envCmd"></span>
+        <button class="copy-btn" onclick="copyPrompt(this)">복사하기</button>
+      </div>
+      <div class="prompt-box">
+        <span class="label">② Claude가 켜지면, Superpowers 플러그인 설치하기</span>
+        <span class="ptext">/plugin marketplace add obra/superpowers-marketplace
+/plugin install superpowers@superpowers-marketplace</span>
+        <button class="copy-btn" onclick="copyPrompt(this)">복사하기</button>
+      </div>
+      <div class="why" style="margin-top:0;"><b>Superpowers 플러그인이란?</b> AI가 Plan Mode에서 설계를 훨씬 꼼꼼하게 할 수 있도록 도와주는 도구이다. 설치 후 /exit로 나갔다가 같은 폴더에서 claude를 다시 실행하면 플러그인이 적용된다. /superpowers 가 자동완성되면 성공!</div>
+      <div class="check-box">
+        <span class="clabel">✅ 확인해보자</span>
+        <div class="check-item"><input type="checkbox"><span>터미널에서 claude를 실행하면 AI가 응답하는 화면이 뜨나?</span></div>
+        <div class="check-item"><input type="checkbox"><span>/superpowers 를 입력했을 때 자동완성이 되나?</span></div>
+      </div>
+      <div class="wiz-nav">
+        <button class="w-prev w-hide" onclick="wPrev()">← 이전</button>
+        <span class="w-count">STEP 1 / 8</span>
+        <button class="w-next" onclick="wNext()">완료, 다음으로 →</button>
+      </div>
+    </section>
+
+    <!-- ── STEP 2: CLAUDE.md ── -->
+    <section class="step wizard-step" id="s2">
+      <div class="step-head"><div class="step-num">2</div><h2>CLAUDE.md 직접 작성하기</h2><span class="axis-badge">하네스 · 맥락</span></div>
+      <div class="connect-banner"><span class="cb-recall">1차시 연결</span><span class="cb-sep">|</span><span class="cb-msg">1차시에서 배운 <b>컨텍스트 엔지니어링</b>을 직접 실천한다 — AI에게 기억을 심어주는 단계이다</span><span class="cb-lv lv-tag-2">레벨 2 · 컨텍스트</span></div>
+
+      <div class="why"><b>왜 직접 쓸까요?</b> AI가 나를 대신해서 써주면 내 프로젝트의 진짜 의도가 빠질 수 있다. 내가 직접 써야 AI가 내 생각대로 움직인다. 아래 틀을 참고해서 <b>빈 칸을 채워</b> 완성하자.</div>
+
+      <div class="adv-code">~/.claude/CLAUDE.md   ← 전역 규칙 (모든 프로젝트 공통)
+./CLAUDE.md            ← 이 프로젝트 전용 규칙 ← 지금 만들 것</div>
+
+      <div class="claudemd-template">
+        <div class="cmt-header">📋 CLAUDE.md 작성 틀 — 빈 칸을 채워보자</div>
+        <div class="cmt-body"><span class="cmt-section"># 프로젝트 소개</span>
+이 프로젝트는 <span class="cmt-fill" id="fill-subject">과목 이름</span> 공부를 위한 <span class="cmt-fill" id="fill-type">사이트 종류</span> 웹사이트이다.
+
+<span class="cmt-section"># 사용자</span>
+<span class="cmt-fill" id="fill-user">누가 쓸 건지 — 예: 중학교 3학년, 혼자 공부하는 학생</span>
+
+<span class="cmt-section"># 디자인 규칙</span>
+<span class="cmt-fill" id="fill-design">색감, 분위기 — 예: 파스텔톤, 둥근 버튼, 귀여운 느낌</span>
+
+<span class="cmt-section"># 기능 설명</span>
+<span class="cmt-fill" id="fill-feature">핵심 기능 한 줄 — 예: 카드를 클릭하면 앞/뒤가 뒤집힌다</span>
+
+<span class="cmt-section"># 주의사항</span>
+- 어려운 전문용어 사용 금지
+- <span class="cmt-fill" id="fill-caution">추가로 지켜줬으면 하는 것 — 예: 한 번에 하나씩만 수정</span>
+- 짧고 단순하게 유지</div>
+      </div>
+
+      <p style="font-size:15px;color:var(--gray);margin:6px 0 4px;">위 틀을 참고해서 아래에 직접 작성하자. 멘토에게 먼저 보여준 다음, Claude Code에게 "아래 내용으로 CLAUDE.md 파일을 만들어줘"라고 부탁하면 된다.</p>
+      <textarea class="cmt-write-area" id="claudeMdUserText" placeholder="# 프로젝트 소개&#10;이 프로젝트는 ... 공부를 위한 ... 웹사이트이다.&#10;&#10;# 사용자&#10;...&#10;&#10;# 디자인 규칙&#10;...&#10;&#10;# 기능 설명&#10;...&#10;&#10;# 주의사항&#10;- ..."></textarea>
+      <button class="cmt-copy-btn" id="claudeMdCopyBtn" onclick="copyClaudeMd()">내 CLAUDE.md 복사하기</button>
+
+      <div class="why" style="margin-top:20px;"><b>Tip.</b> 짧을수록 좋다. AI는 이 파일을 매 세션마다 통째로 읽는다. 길면 느려지고 토큰을 낭비한다. 핵심 3~5줄이면 충분하다.</div>
+      <div class="check-box">
+        <span class="clabel">✅ 확인해보자</span>
+        <div class="check-item"><input type="checkbox"><span>내가 직접 CLAUDE.md를 작성했나?</span></div>
+        <div class="check-item"><input type="checkbox"><span>프로젝트 폴더 안에 CLAUDE.md 파일이 실제로 생겼나?</span></div>
+        <div class="check-item"><input type="checkbox"><span>파일을 열어보면 내가 쓴 내용이 그대로 들어가 있나?</span></div>
+      </div>
+      <div class="wiz-nav">
+        <button class="w-prev" onclick="wPrev()">← 이전</button>
+        <span class="w-count">STEP 2 / 8</span>
+        <button class="w-next" onclick="wNext()">완료, 다음으로 →</button>
+      </div>
+    </section>
+
+    <!-- ── STEP 3: Plan Mode ── -->
+    <section class="step wizard-step" id="s3">
+      <div class="step-head"><div class="step-num">3</div><h2>Plan Mode로 설계부터 하기</h2><span class="axis-badge">하네스 · 계획</span></div>
+      <div class="connect-banner"><span class="cb-recall">1차시 연결</span><span class="cb-sep">|</span><span class="cb-msg">1차시 실습 2에서 체험한 <b>"같이 계획 세우자"</b>가 바로 Plan Mode다 — 하네스 6축 중 <b>계획</b> 축이다</span><span class="cb-lv lv-tag-1">레벨 1 · 프롬프트</span></div>
+      <div class="why"><b>왜 이렇게 할까요?</b> 바로 "만들어줘"라고 하면 AI가 여러분 머릿속 전제를 담지 못한 채 짐작해서 진행한다. <b>Plan Mode</b>로 들어가면 코드를 쓰기 전에 먼저 질문하고, 계획을 세운 뒤 승인을 받아야만 실행한다. "해줘" 대신 "같이 계획 세우자"의 차이이다.</div>
+      <div class="prompt-box">
+        <span class="label">① claude 실행 후, Plan Mode로 진입하기</span>
+        <span class="ptext">Shift+Tab 누르기  (또는 /plan 직접 입력)</span>
+        <button class="copy-btn" onclick="copyPrompt(this)">복사하기</button>
+      </div>
+      <div class="prompt-box">
+        <span class="label">② Plan Mode에서 내 사이트 설명 입력하기</span>
+        <span class="ptext" id="planPrompt"></span>
+        <button class="copy-btn" onclick="copyPrompt(this)">복사하기</button>
+      </div>
+      <div class="why" style="margin-top:0;"><b>AI가 먼저 질문한다!</b> Plan Mode에서 Superpowers 플러그인이 작동하면, AI가 설계 전에 더 세밀하게 질문한다. 그 질문에 답해주면 AI가 여러분 머릿속 계획을 빠짐없이 이해하고 실행한다. 계획을 읽어보고 괜찮으면 'Yes'(맥락 유지)를 선택하자.</div>
+      <div class="check-box">
+        <span class="clabel">✅ 확인해보자</span>
+        <div class="check-item"><input type="checkbox"><span>index.html / style.css / script.js 같은 파일들이 만들어졌나?</span></div>
+        <div class="check-item"><input type="checkbox"><span>AI가 먼저 계획을 보여주고, 승인 후에 진행했나?</span></div>
+      </div>
+      <div class="wiz-nav">
+        <button class="w-prev" onclick="wPrev()">← 이전</button>
+        <span class="w-count">STEP 3 / 8</span>
+        <button class="w-next" onclick="wNext()">완료, 다음으로 →</button>
+      </div>
+    </section>
+
+    <!-- ── STEP 4: 실행·확인·다듬기 ── -->
+    <section class="step wizard-step" id="s4">
+      <div class="step-head"><div class="step-num">4</div><h2>실행해서 확인하고, 정확하게 다듬기</h2><span class="axis-badge">하네스 · 실행 · 검증</span></div>
+      <div class="connect-banner"><span class="cb-recall">1차시 연결</span><span class="cb-sep">|</span><span class="cb-msg">1차시에서 배운 <b>구체적 프롬프트</b>가 실전이다 — "이상하다" 대신 정확하게 설명하는 것이 레벨 1의 핵심이다</span><span class="cb-lv lv-tag-1">레벨 1 · 프롬프트</span></div>
+      <div class="why"><b>왜 이렇게 할까요?</b> 처음부터 완벽하게 나오는 경우는 드물다. 결과를 직접 열어서 확인하고, "이상하다" 대신 <b>무엇이 어떻게 이상한지 구체적으로</b> 설명해서 고쳐나가는 게 핵심이다. 디자이너에게 피드백 주듯이 대화하면 된다.</div>
+      <div class="prompt-box">
+        <span class="label">① 만들어진 사이트 열어보기 — Mac</span>
+        <span class="ptext">open index.html</span>
+        <button class="copy-btn" onclick="copyPrompt(this)">복사하기</button>
+      </div>
+      <div class="prompt-box">
+        <span class="label">① 만들어진 사이트 열어보기 — Windows</span>
+        <span class="ptext">start index.html</span>
+        <button class="copy-btn" onclick="copyPrompt(this)">복사하기</button>
+      </div>
+      <div class="prompt-box">
+        <span class="label">② 고쳐달라고 할 때 — 이렇게 구체적으로</span>
+        <span class="ptext" id="p2"></span>
+        <button class="copy-btn" onclick="copyPrompt(this)">복사하기</button>
+      </div>
+      <div class="prompt-box">
+        <span class="label">③ 기능 1 — 먼저 이것만 부탁해보자</span>
+        <span class="ptext" id="p3a"></span>
+        <button class="copy-btn" onclick="copyPrompt(this)">복사하기</button>
+      </div>
+      <div class="prompt-box">
+        <span class="label">④ 기능 2 — 위 기능이 잘 되면, 그다음에</span>
+        <span class="ptext" id="p3b"></span>
+        <button class="copy-btn" onclick="copyPrompt(this)">복사하기</button>
+      </div>
+      <div class="check-box">
+        <span class="clabel">✅ 확인해보자</span>
+        <div class="check-item"><input type="checkbox"><span id="checkItem2"></span></div>
+        <div class="check-item"><input type="checkbox"><span>"이상하다" 대신 "이 부분이 이렇게 됐으면 좋겠어"라고 구체적으로 설명했나?</span></div>
+        <div class="check-item"><input type="checkbox"><span>브라우저에 내 사이트가 뜨고, 고친 점이 반영됐나?</span></div>
+      </div>
+      <div class="wiz-nav">
+        <button class="w-prev" onclick="wPrev()">← 이전</button>
+        <span class="w-count">STEP 4 / 8</span>
+        <button class="w-next" onclick="wNext()">완료, 다음으로 →</button>
+      </div>
+    </section>
+
+    <!-- ── STEP 5: Hook ── -->
+    <section class="step wizard-step" id="s5">
+      <div class="step-head"><div class="step-num">5</div><h2>Hook으로 안전장치 만들기</h2><span class="axis-badge">하네스 · 검증</span></div>
+      <div class="connect-banner"><span class="cb-recall">1차시 연결</span><span class="cb-sep">|</span><span class="cb-msg">1차시 하네스 6축 중 <b>검증</b> 축이다 — "AI가 알아서 판단"이 아니라 <b>자동으로 막히는</b> 규칙을 설계한다</span><span class="cb-lv lv-tag-3">레벨 3 · 하네스</span></div>
+      <div class="why"><b>왜 이렇게 할까요?</b> 지금까지의 규칙은 AI가 "알아서 판단해서" 지키는 것들이었다. <b>Hook(훅)</b>은 특정 상황에서 <b>무조건 자동으로</b> 실행되는 안전장치이다. 스킬은 직접 꺼내보는 레시피, 훅은 자동으로 울리는 알람 같은 거다.</div>
+      <div class="why" style="margin-top:0;"><b>왜 비밀 키가 위험할까요?</b> API 키나 .env 파일의 비밀 키가 실수로 코드에 적히면, GitHub에 올렸을 때 전 세계가 볼 수 있다. Hook은 파일을 저장하기 전에 이걸 자동으로 차단해줘요. 훅은 전역 설정에 등록하면 모든 프로젝트에 자동으로 적용된다!</div>
+      <div class="prompt-box">
+        <span class="label">이렇게 부탁하자 — 전역 설정에 등록하는 게 포인트</span>
+        <span class="ptext">비밀 키(.env 파일이나 service 키 같은 것)를 실수로 코드 파일에 쓰려고 하면 자동으로 막아주는 규칙(훅)을 전역 설정(~/.claude/settings.json)에 만들어줘.</span>
+        <button class="copy-btn" onclick="copyPrompt(this)">복사하기</button>
+      </div>
+      <div class="check-box">
+        <span class="clabel">✅ 확인해보자</span>
+        <div class="check-item"><input type="checkbox"><span>훅이 전역 설정에 추가됐다고 Claude가 답했나?</span></div>
+        <div class="check-item"><input type="checkbox"><span>이제 모든 프로젝트에서 비밀 키 노출이 자동으로 차단된다!</span></div>
+      </div>
+      <div class="wiz-nav">
+        <button class="w-prev" onclick="wPrev()">← 이전</button>
+        <span class="w-count">STEP 5 / 8</span>
+        <button class="w-next" onclick="wNext()">완료, 다음으로 →</button>
+      </div>
+    </section>
+
+    <!-- ── STEP 6: Supabase ── -->
+    <section class="step wizard-step" id="s6">
+      <div class="step-head"><div class="step-num">6</div><h2>데이터베이스에 연결해서, 새로고침해도 안 사라지게</h2><span class="axis-badge">하네스 · 맥락 확장</span></div>
+      <div class="connect-banner"><span class="cb-recall">1차시 연결</span><span class="cb-sep">|</span><span class="cb-msg">레벨 2 <b>컨텍스트 엔지니어링</b> 심화 — CLAUDE.md가 AI의 기억이었다면, Supabase는 <b>데이터의 기억</b>이다</span><span class="cb-lv lv-tag-2">레벨 2 · 컨텍스트</span></div>
+      <div class="why"><b>왜 이렇게 할까요?</b> 지금 만든 사이트는 새로고침하면 처음 상태로 돌아가요. <b>Supabase</b> 같은 무료 서버 창고에 데이터를 저장하면, 어떤 기기로 접속해도 내가 넣은 내용이 그대로 남아있다.</div>
+      <div class="prep-box" style="margin:14px 0;">
+        <h3>사람이 직접 할 일 — 3가지</h3>
+        <ul>
+          <li><b>supabase.com</b> 가입 → New Project로 무료 프로젝트 생성</li>
+          <li>Project URL과 anon(공개) key를 메모장에 복사해두기</li>
+          <li><b>service(비밀) key는 따로 복사하지 않기</b> — 코드에 절대 넣으면 안 되는 마스터 키예요</li>
+        </ul>
+      </div>
+      <div class="preview-box" id="previewBox"></div>
+      <div class="prompt-box">
+        <span class="label">Claude Code에 Supabase를 MCP로 연결해달라고 부탁하자</span>
+        <span class="ptext">Supabase를 MCP로 연결해줘. 내 Project URL과 anon key는 이거야 — [여기에 붙여넣기]. 연결되면 알려줘.</span>
+        <button class="copy-btn" onclick="copyPrompt(this)">복사하기</button>
+      </div>
+      <div class="prompt-box">
+        <span class="label">연결되면, 테이블을 만들고 데이터를 채워달라고 하자</span>
+        <span class="ptext" id="dbPrompt"></span>
+        <button class="copy-btn" onclick="copyPrompt(this)">복사하기</button>
+      </div>
+      <div class="check-box">
+        <span class="clabel">✅ 확인해보자</span>
+        <div class="check-item"><input type="checkbox"><span>anon(공개) key만 코드에 넣었나? service key는 절대 코드에 없죠?</span></div>
+        <div class="check-item"><input type="checkbox"><span>사이트를 새로고침해도 데이터가 그대로 남아있나?</span></div>
+      </div>
+      <div class="wiz-nav">
+        <button class="w-prev" onclick="wPrev()">← 이전</button>
+        <span class="w-count">STEP 6 / 8</span>
+        <button class="w-next" onclick="wNext()">완료, 다음으로 →</button>
+      </div>
+    </section>
+
+    <!-- ── STEP 7: Vercel 배포 ── -->
+    <section class="step wizard-step" id="s7">
+      <div class="step-head"><div class="step-num">7</div><h2>Vercel CLI로, 진짜 인터넷 주소가 있는 사이트로</h2><span class="axis-badge">하네스 · 개선</span></div>
+      <div class="connect-banner"><span class="cb-recall">1차시 연결</span><span class="cb-sep">|</span><span class="cb-msg">하네스 6축 중 <b>개선</b> 축이다 — 세상에 내놓고, 피드백을 받아서 계속 발전시키는 사이클의 시작이다</span><span class="cb-lv lv-tag-3">레벨 3 · 하네스</span></div>
+      <div class="why"><b>왜 이렇게 할까요?</b> 지금은 내 컴퓨터에서만 열리는 파일이다. 배포를 하면 세상 모든 사람이 접속할 수 있는 진짜 주소가 생겨요. Claude Code에게 통째로 맡기면 CLI 설치부터 배포까지 알아서 해줘요.</div>
+      <div class="deploy-wrap" style="padding:40px 24px;">
+        <div class="deploy-step">
+          <div class="deploy-num">💬</div>
+          <div class="dtxt"><b>Claude Code에게 배포를 통째로 맡기세요</b><span>아래 프롬프트 하나면 Vercel CLI 설치부터 로그인, 배포까지 알아서 진행한다.</span></div>
+        </div>
+        <div class="deploy-step">
+          <div class="deploy-num">🔑</div>
+          <div class="dtxt"><b>중간에 로그인 창이 뜨면</b><span>브라우저에서 이메일/구글 등으로 로그인. Claude가 권한을 물으면 안전한 요청은 Yes로 승인하자.</span></div>
+        </div>
+        <div class="deploy-step">
+          <div class="deploy-num">🔗</div>
+          <div class="dtxt"><b>URL을 받으면 완성!</b><span>https://...vercel.app 형태의 주소가 나온다. 다른 기기로 열어서 사이트가 그대로 뜨면 성공이다.</span></div>
+        </div>
+        <div class="prompt-box" style="margin-top:10px;">
+          <span class="label">Claude Code에 그대로 붙여넣기</span>
+          <span class="ptext">이 사이트를 Vercel로 인터넷에 배포해줘. Vercel CLI가 없으면 네가 알아서 설치하고(전역에 한 번만), GitHub 없이 바로 배포해줘. 배포가 끝나면 접속 주소(URL)를 알려줘.</span>
+          <button class="copy-btn" onclick="copyPrompt(this)">복사하기</button>
+        </div>
+        <div class="prep-box" style="background:rgba(255,255,255,.06);margin-top:26px;">
+          <h3 style="color:var(--accent-light);">💡 CLI(Vercel)와 MCP(Supabase), 왜 방식이 다를까?</h3>
+          <ul style="color:#D9E0EC;">
+            <li>CLI(Vercel) — 한 번 로그인해두면 이후로는 자동. 배포는 통째로 끝나는 단순 작업이라 속도를 우선한다.</li>
+            <li>MCP(Supabase) — 매 작업마다 Claude가 승인을 요청한다. 데이터는 되돌리기 어려우니 보안을 우선한다.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="check-box" style="max-width:820px;margin:0 auto;padding:0 24px;">
+        <span class="clabel">✅ 확인해보자</span>
+        <div class="check-item"><input type="checkbox"><span>vercel.app 주소가 나왔나?</span></div>
+        <div class="check-item"><input type="checkbox"><span>다른 기기(혹은 핸드폰)로 그 주소에 접속했을 때 사이트가 뜨나?</span></div>
+      </div>
+      <div class="wiz-nav wiz-nav-dark">
+        <button class="w-prev" onclick="wPrev()">← 이전</button>
+        <span class="w-count">STEP 7 / 8</span>
+        <button class="w-next" onclick="wNext()">완료, 마지막 단계로 →</button>
+      </div>
+    </section>
+
+    <!-- ── STEP 8: 하네스 총정리 ── -->
+    <section class="step wizard-step" id="s8">
+      <div class="adv-wrap" style="max-width:900px;margin:0 auto;padding:40px 24px 60px;">
+        <span class="eyebrow3">STEP 8 · 마무리</span>
+        <h2 style="color:#fff;font-size:28px;margin:12px 0 8px;">오늘 한 일, 하네스 엔지니어링으로 정리하기</h2>
+        <p class="lead">AI에게 매번 새로 설명하는 대신, <b style="color:#fff">AI가 일하기 좋은 환경 자체를 만들어주는 것</b>을 하네스 엔지니어링이라고 불러요. 오늘 그걸 직접 해본 거이다.</p>
+
+        <div class="adv-card">
+          <h3>🧩 하네스 엔지니어링 6축 — 오늘 밟은 순서</h3>
+          <p style="color:#C7CEDA;margin-bottom:16px;font-size:15px;">프롬프트 하나로는 부족한다. AI가 잘 일하려면 6가지 축이 맞물려야 한다. 오늘 여러분은 이 6가지를 모두 경험했어요.</p>
+          <table class="axis-table">
+            <tr><th>오늘 했던 단계</th><th>하네스의 축</th><th>뭘 만들었나?</th></tr>
+            <tr><td>STEP1 개발 환경 + Superpowers</td><td class="doneMark">구조 ✓</td><td>AI가 쓸 도구와 플러그인</td></tr>
+            <tr><td>STEP2 CLAUDE.md 작성</td><td class="doneMark">맥락 ✓</td><td>AI가 항상 기억해야 할 규칙 파일</td></tr>
+            <tr><td>STEP3 Plan Mode 설계</td><td class="doneMark">계획 ✓</td><td>코드 전에 먼저 계획 세우기</td></tr>
+            <tr><td>STEP4 실행하고 다듬기</td><td class="doneMark">실행·검증 ✓</td><td>구체적 피드백으로 완성도 높이기</td></tr>
+            <tr><td>STEP5 Hook 안전장치</td><td class="doneMark">구조 심화 ✓</td><td>실수를 자동으로 막는 경보 시스템</td></tr>
+            <tr><td>STEP6 Supabase 연결</td><td class="doneMark">맥락 확장 ✓</td><td>데이터가 영구 저장되는 창고</td></tr>
+            <tr><td>STEP7 Vercel 배포</td><td class="doneMark">개선 ✓</td><td>세상에 내놓고, 계속 다듬기</td></tr>
+          </table>
+          <div class="why" style="margin-top:16px;">이 6축은 한 번 끝나는 게 아니다. 배포한 뒤에도 피드백을 받으면 다시 맥락을 업데이트하고 → 계획하고 → 실행하고 → 검증하는 사이클이 계속 돈다. 그게 진짜 개발이다.</div>
+        </div>
+
+        <div class="adv-card">
+          <h3>📈 프롬프트 엔지니어링 → 컨텍스트 엔지니어링 → 하네스 엔지니어링</h3>
+          <div class="karpathy-grid">
+            <div class="karpathy-item"><b>레벨 1. 프롬프트 엔지니어링</b><span>"잘 말하기" — 프롬프트를 예쁘게 다듬어서 더 좋은 답변 받기</span></div>
+            <div class="karpathy-item"><b>레벨 2. 컨텍스트 엔지니어링</b><span>"잘 준비하기" — 필요한 정보를 골라서 AI에게 미리 넣어주기</span></div>
+            <div class="karpathy-item"><b>레벨 3. 하네스 엔지니어링</b><span>"잘 설계하기" — CLAUDE.md, Hook, 플러그인, 스킬로 AI가 혼자 잘 일하게 만들기</span></div>
+          </div>
+        </div>
+
+        <div class="adv-card">
+          <h3>💡 AI와 일 잘하는 사람들의 4가지 습관 (카르파시 원칙)</h3>
+          <p style="color:#C7CEDA;font-size:15px;margin-bottom:16px;">Andrej Karpathy(전 Tesla AI 총책임자)가 정리한 원칙이다. CLAUDE.md 작성에 그대로 적용할 수 있다.</p>
+          <div class="karpathy-grid">
+            <div class="karpathy-item"><b>1. 코딩보다 먼저 생각하기</b><span>바로 만들지 말고, 먼저 계획을 세우고 승인받은 뒤 시작한다 (Plan Mode!)</span></div>
+            <div class="karpathy-item"><b>2. 최대한 단순하게</b><span>부탁 안 한 기능까지 알아서 넣지 않게, 필요한 것만 딱</span></div>
+            <div class="karpathy-item"><b>3. 건드린 곳만 수정 (수술적 변경)</b><span>내가 부탁한 부분만 고치고, 나머지 코드는 절대 건드리지 않기</span></div>
+            <div class="karpathy-item"><b>4. 목표 중심으로 움직이기</b><span>"고쳐줘" 대신 "이 조건이 되면 성공이야" — 결과 기준을 먼저 알려주기</span></div>
+          </div>
+        </div>
+
+        <div class="adv-card">
+          <span class="tag-optional">다음 도전 과제</span>
+          <h3>🚀 이번 주에 더 해볼 것</h3>
+          <div id="ideaChips"></div>
+          <p style="margin-top:14px;color:#C7CEDA;">오늘 만든 CLAUDE.md를 일주일 써보면서, AI가 자주 틀리는 부분을 한 줄씩 규칙으로 추가해보자. 그게 바로 여러분만의 하네스이다.</p>
+        </div>
+      </div>
+      <div class="wiz-nav wiz-nav-dark">
+        <button class="w-prev" onclick="wPrev()">← 이전</button>
+        <span class="w-count">STEP 8 / 8</span>
+        <button class="w-next w-last" onclick="wDone()">전체 완료!</button>
+      </div>
+    </section>
+
+    <footer>멘토링 연구 프로젝트 · 옥쌤과 아이들</footer>
+  </div><!-- /guideScreen -->
+
+</div><!-- /sectionB -->
+
+
+
+
+
+<script src="script.js"></script>
+</body>
+</html>
